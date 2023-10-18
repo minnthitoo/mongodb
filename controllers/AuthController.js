@@ -67,7 +67,9 @@ const login = (request, response, next) => {
             });
         }
     }).catch((err) => {
-        
+        response.json({
+            message: 'An error occured'
+        });
     });
 }
 
