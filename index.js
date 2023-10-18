@@ -7,6 +7,7 @@ const app           = express();
 // routes
 const AuthRoute     = require('./routes/auth');
 const AdminRoute    = require('./routes/admin');
+const path          = require('path');
 
 mongoose.connect('mongodb://localhost:27017/auth_test', {family: 4});
 
@@ -22,6 +23,7 @@ db.on('open', () => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, '')));
 
 // use route
 app.use('/api', AuthRoute);
